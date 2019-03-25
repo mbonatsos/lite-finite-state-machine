@@ -36,7 +36,7 @@ namespace FiniteStateMachine
         {
             if (action == null)
             {
-                throw new ArgumentNullException($"{nameof(action)}");
+                throw new ArgumentNullException(nameof(action));
             }
 
             _onEntry = action;
@@ -53,7 +53,7 @@ namespace FiniteStateMachine
         {
             if (action == null)
             {
-                throw new ArgumentNullException($"{nameof(action)}");
+                throw new ArgumentNullException(nameof(action));
             }
 
             _onExit = action;
@@ -97,7 +97,7 @@ namespace FiniteStateMachine
         {
             if (state == null)
             {
-                throw new Exception($"Please set a valid {nameof(State)}.");
+                throw new ArgumentNullException(nameof(state), $"Please set a valid {nameof(State)}.");
             }
 
             if (_maps.ContainsKey(transition))
