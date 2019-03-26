@@ -148,6 +148,24 @@ namespace FiniteStateMachine.Tests
             // Assert
             action.Should().Throw<Exception>();
         }
+
+        [Fact]
+        public void PerformTransition_WithNonConfiguredState_ThrowsException()
+        {
+            // Arrange
+            var idleState = new IdleState();
+            var chaseState = new ChaseState();
+            var stateMachine = new StateMachine(2);
+
+            stateMachine.Configure(idleState)
+              .Link((int)Transition.EnemyInProximity, chaseState);
+
+            // Act
+            Action action = () => stateMachine.PerformTransition((int)Transition.EnemyInProximity);
+
+            // Assert
+            action.Should().Throw<Exception>();
+        }
     }
 
     internal enum Transition

@@ -53,9 +53,11 @@ namespace FiniteStateMachine
                     _currentState.OnExit();
                     _currentState = _states[i];
                     _currentState.OnEntry();
-                    break;
+                    return;
                 }
             }
+
+            throw new Exception($"{nextState.Name} State hasn't been configured");
         }
 
         private void ValidateState(IState state)
